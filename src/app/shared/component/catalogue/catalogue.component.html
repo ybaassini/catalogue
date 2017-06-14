@@ -1,0 +1,52 @@
+<div class="app-catalogue-page">
+  <div class="app-catalogue-page__header">
+    <div class="app-catalogue-page__header--options">
+      <div class="app-catalogue-page__header--options-filter">
+        <section>
+          <label>Filtrer par:</label>
+          <md-checkbox *ngFor="let tag of catalogueService.tags" [(ngModel)]="tag.checked">{{tag.name}}</md-checkbox>
+        </section>
+      </div>
+      <div class="app-catalogue-page__header--options-sort">
+        <section>
+          <label>Tri par:</label>
+          <md-radio-group [(ngModel)]="sort">
+            <md-radio-button value="price">Prix</md-radio-button>
+            <md-radio-button value="weight">Poids</md-radio-button>
+          </md-radio-group>
+        </section>
+      </div>
+    </div>
+    <div class="app-catalogue-page__header--search" [formGroup]="searchForm">
+      <md-input-container>
+        <input type="text" mdInput [mdAutocomplete]="auto"  placeholder="description" formControlName="search" >
+      </md-input-container>
+
+      <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let product of filteredOptions | async" [value]="product.description">
+          {{ product.description }}
+        </md-option>
+      </md-autocomplete>
+      <button md-button (click)="search()">Rechercher</button>
+    </div>
+  </div>
+  <div class="app-catalogue-page__content">
+    <div class="app-catalogue-page__content--product" *ngFor="let product of catalogueService.products.value | paginate: { itemsPerPage: 3, currentPage: p } | product:catalogueService.tags:sort">
+      <img src="{{product.url}}" alt="image">
+      <div class="app-catalogue-page__content--product-description">
+        <div class="app-catalogue-page__content--product-description title">{{product.description}}</div>
+        <div class="app-catalogue-page__content--product-description tags">
+          <span *ngFor="let tag of product.tags">{{tag.name}}</span>
+        </div>
+      </div>
+      <div class="app-catalogue-page__content--product-price">
+        {{product.price.amount | price}}
+      </div>
+      <div class="app-catalogue-page__content--product-weight">
+        {{product.weight | weight}}
+      </div>
+      <div (click)="more(product)">En savoir Plus</div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

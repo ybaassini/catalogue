@@ -1,0 +1,23 @@
+<div class="product-page">
+    <h2 class="product-page__title">telephone</h2>
+    <div class="product-page__content">
+        <div class="product-page__content--image">
+            <img src="{{product.url}}" alt="">
+        </div>
+        <div class="product-page__content--info">
+            <div class="product-page__content--info-description">
+                {{product.description}}
+            </div>
+            <div class="product-page__content--info-weight">
+                Poids : {{product.weight}} kg
+            </div>
+            <div class="product-page__content--info-price">
+                Prix: {{product.price.amount}} €
+            </div>
+            <label for="">Catégories attachées :</label>
+            <div class="product-page__content--info-category" *ngFor="let category of product.category">
+                {{category.name}}
+            </div>
+        </div>
+    </div>
+</div>

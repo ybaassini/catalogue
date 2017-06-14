@@ -1,0 +1,82 @@
+.app-catalogue-page {
+    border: 1px solid #E8E8E8;
+    &__header {
+        display: flex;
+        height: 200px;
+        background: #673ab7;
+        color: white;
+        border-bottom: 1px solid #E8E8E8;
+        &--options {
+            display: flex;
+            flex: 1;
+            border-right: 1px solid #E8E8E8;    
+            padding: 10px;
+            &-filter {
+                flex: 1;
+                section {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            &-sort {
+                flex: 1;
+            }
+        }
+
+        &--search {
+            flex: 1;
+            padding: 10px;
+        }
+    }
+
+    &__content {
+        padding: 10px;
+        &--product {
+            display: flex;
+            padding: 10px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            &-description {
+                display: flex;
+                flex-direction: column;
+                flex: 2;
+                &.title {
+
+                }
+
+                &.tags {
+                    flex-direction: row;
+                    span {
+                        margin-right: 5px;
+                    }
+                }
+
+            }
+
+            &-price {
+                flex: 1;
+            }
+
+            &-weight {
+                flex: 1;
+            }
+        }
+    }
+    /deep/ md-radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /deep/ .mat-input-underline {
+        border-color: white;
+    }
+
+    /deep/ .mat-input-placeholder.mat-empty {
+        color: white;
+    }
+
+}

@@ -1,0 +1,41 @@
+.product-page {
+    padding: 20px;
+    &__title {
+
+    }
+
+    &__content {
+        display: flex;
+        height: 400px;
+        &--image {
+            flex: 3;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &--info {
+            justify-content: space-around;
+            flex-direction: column;
+            display: flex;
+            padding-left: 10px;
+            &-description {
+
+            }
+
+            &-weight {
+                
+            }
+
+            &-price {
+                
+            }
+
+            &-category {
+                
+            }
+        }
+        
+    }
+}
